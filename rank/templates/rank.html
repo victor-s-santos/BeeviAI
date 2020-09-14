@@ -13,8 +13,10 @@ Qual a sua posição?
     </thead>
     <tbody>
         {% for score in scores %}
-            <td>{{ score.usuario }}</td>
-            <td>{{ score.score }}</td>
+            <tr>
+                <td>{{ score.usuario }}</td>
+                <td>{{ score.score }}</td>
+            </tr>
         {% endfor %}
     </tbody>
 </table>
