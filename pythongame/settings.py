@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     #sistema de cadastro de usuário
     'register',
+    #app que centraliza o acesso
     'core',
+    #app que roda o jogo
+    'game',
 ]
 
 MIDDLEWARE = [
