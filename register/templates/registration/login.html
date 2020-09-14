@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Faça seu Login para ter acesso ao jogo.
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method='post' class="form-group">
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-success">Login</button>
+    <p>Ainda não é cadastrado? Não perca tempo, cadastre-se aqui:<a href="{% url 'register' %}">Cadastrar</a></p>
+</form>
+{% endblock %}
