@@ -3,6 +3,7 @@ from django.urls import path, include
 from core import views as core_v
 from register import views as register_v
 from game import views as game_v
+from rank import views as rank_v
 
 urlpatterns = [
     path('', core_v.index, name='home'),
@@ -13,5 +14,8 @@ urlpatterns = [
     
     #game
     path('game/', game_v.play, name='game'),
+
+    #rank do jogo
+    path('rank/', rank_v.score, name='rank'),
     path('admin/', admin.site.urls),
 ]

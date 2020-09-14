@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'core',
     #app que roda o jogo
     'game',
+    #app que possui o modelo que rankeia os jogadores
+    'rank',
 ]
 
 MIDDLEWARE = [
