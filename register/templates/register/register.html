@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Cadastro de Usuário{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    .alert{
+        padding: 0 15px;
+        margin-bottom: 1rem;
+        border: 0px solid transparent;
+        border-radius: .25rem;
+    }
+    .alert p{
+        padding: 7px 0 7px;
+    }
+    .alert.sucesso{
+        color: #3c763d;
+        background-color: #dff0d8;
+        border-color: #d0e9c6;
+
+    }
+</style>
+<br />
+<div class="alert sucesso">
+    {% if messages %}
+        {% for msg in messages %}
+            <div>
+                <p>{{ msg }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
