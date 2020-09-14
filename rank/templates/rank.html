@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Qual a sua posição?
+{% endblock %}
+{% block content %}
+<table class="table mt-3" border="1px">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Usuário</th>
+            <th scope="col">Pontuação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for score in scores %}
+            <td>{{ score.usuario }}</td>
+            <td>{{ score.score }}</td>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
