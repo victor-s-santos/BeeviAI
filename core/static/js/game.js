@@ -402,6 +402,6 @@ m.add_edges();
 m.gen_maze();
 m.draw_canvas("canvas");
 function drawMoves() {
-    document.getElementById("c").innerHTML = "Moves: "+ m.getMoves()
+    document.getElementById("c").innerHTML = "Passos realizados: "+ m.getMoves()
 }
 setInterval(drawMoves, 100);
