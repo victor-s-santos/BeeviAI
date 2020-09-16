@@ -5,7 +5,7 @@
         modelfungo = function() {
             console.log("func called")
             modal.style.display = "block";
-            x = document.querySelector(".gamehead");
+            x = document.querySelector("#gamehead");
             x.textContent = "Fim de Jogo!"
 
         }
@@ -13,7 +13,7 @@
         modelfunwin = function() {
             console.log("func called")
             modal.style.display = "block";
-            x = document.querySelector(".gamehead");
+            x = document.querySelector("#gamehead");
             x.textContent = "Parabéns, você venceu!"
 
         }
