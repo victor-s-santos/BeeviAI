@@ -410,11 +410,12 @@ setInterval(drawMoves, 100);
 $(document).ready(function(){
     $('#myModal').on('click', function(){
         $user = $('#printuser').text();
-        $score = this.moves;
-  
+        $score = parseInt(m.getMoves(), 10)
+        //$score = parseInt(this.moves, 10);  
         if($user == "" || $score == ""){
             alert("Please complete field");
         }else{
+            alert(`${$user},${$score}`);
             $.ajax({
                 type: "POST",
                 url: "insert",
