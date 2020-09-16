@@ -405,3 +405,31 @@ function drawMoves() {
     document.getElementById("c").innerHTML = "Passos realizados: "+ m.getMoves()
 }
 setInterval(drawMoves, 100);
+
+//jquery
+$(document).ready(function(){
+    $('#myModal').on('click', function(){
+        $user = $('#printuser').text();
+        $score = this.moves;
+  
+        if($user == "" || $score == ""){
+            alert("Please complete field");
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "insert",
+                data:{
+                    user: $user,
+                    score: $score,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(){
+                    alert('Save Data');
+                    $('#user').text('');
+                    $('#score').val('');
+                    window.location = "home";
+                }
+            });
+        }
+    });
+});

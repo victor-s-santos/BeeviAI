@@ -4,6 +4,7 @@ from core import views as core_v
 from register import views as register_v
 from game import views as game_v
 from rank import views as rank_v
+from django.conf.urls import url
 
 urlpatterns = [
     path('', core_v.index, name='home'),
@@ -14,6 +15,8 @@ urlpatterns = [
     
     #game
     path('game/', game_v.play, name='game'),
+    #inserir o recorde
+    url(r'game/insert$', game_v.insert, name='insert'),
 
     #rank do jogo
     path('rank/', rank_v.score, name='rank'),
