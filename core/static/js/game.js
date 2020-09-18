@@ -405,18 +405,36 @@ function drawMoves() {
     document.getElementById("c").innerHTML = "Passos realizados: "+ m.getMoves()
 }
 setInterval(drawMoves, 100);
+//token
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
 
 //jquery
 $(document).ready(function(){
     $('#myModal').on('click', function(){
         $user = $('#printuser').text();
-        $score = parseInt(m.getMoves(), 10)
-        //$score = parseInt(this.moves, 10);  
+        $score = parseInt(m.getMoves(), 10)  
         if($user == "" || $score == ""){
-            alert("Please complete field");
+            alert("Nenhum valor foi registrado!");
         }else{
             alert(`${$user},${$score}`);
             $.ajax({
+                headers: { "X-CSRFToken": csrftoken },
                 type: "POST",
                 url: "insert",
                 data:{
@@ -425,7 +443,7 @@ $(document).ready(function(){
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                 },
                 success: function(){
-                    alert('Save Data');
+                    alert('Os valores foram registrados!');
                     $('#user').text('');
                     $('#score').val('');
                     window.location = "home";

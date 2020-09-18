@@ -1,11 +1,10 @@
 from django.conf import settings
-#from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
 
 class Pontuacao(models.Model):
-    usuario = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     score = models.IntegerField()
     data_da_partida = models.DateField(auto_now_add=True)
 
@@ -14,5 +13,5 @@ class Pontuacao(models.Model):
         verbose_name_plural = 'Partidas'
 
     def __str__(self):
-        return self.usuario.username
+        return self.user.username
 # Create your models here.
