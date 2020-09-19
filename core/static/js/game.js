@@ -19,9 +19,9 @@ modelfunwin = function() {
 }
 
 document.getElementById("demo").addEventListener("click", myFunction);
-
+//retornando o usuário a home page
 function myFunction() {
-    document.location.reload();
+    window.location = "/";
 }
 
 span.onclick = function() {
@@ -44,11 +44,9 @@ function startTimer(duration, display) {
     function timer() {
         if(playing) {
             diff = duration - (((Date.now() - start) / 1000) | 0);
-            minutes = (diff / 60) | 0;
             seconds = (diff % 60) | 0;
-            minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = "Atenção com o tempo: " + minutes + ":" + seconds;
+            display.textContent = `Atenção com o tempo: ${seconds}`;
 
             if (diff <= 0) {
                 display.textContent = "Fim de Jogo";
@@ -405,14 +403,13 @@ function drawMoves() {
     document.getElementById("c").innerHTML = "Passos realizados: "+ m.getMoves()
 }
 setInterval(drawMoves, 100);
-//token
+//token necessário para validar o post
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
         var cookies = document.cookie.split(';');
         for (var i = 0; i < cookies.length; i++) {
             var cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -424,15 +421,14 @@ function getCookie(name) {
 var csrftoken = getCookie('csrftoken');
 
 
-//jquery
+//jquery para realizar o post
 $(document).ready(function(){
-    $('#myModal').on('click', function(){
+    $('#demo').on('click', function(){
         $user = $('#printuser').text();
         $score = parseInt(m.getMoves(), 10)  
         if($user == "" || $score == ""){
             alert("Nenhum valor foi registrado!");
         }else{
-            alert(`${$user},${$score}`);
             $.ajax({
                 headers: { "X-CSRFToken": csrftoken },
                 type: "POST",
@@ -442,12 +438,6 @@ $(document).ready(function(){
                     score: $score,
                     csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
                 },
-                success: function(){
-                    alert('Os valores foram registrados!');
-                    $('#user').text('');
-                    $('#score').val('');
-                    window.location = "home";
-                }
             });
         }
     });

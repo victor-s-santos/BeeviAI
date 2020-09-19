@@ -4,10 +4,18 @@
     margin-bottom: 15px;
     font-size: xx-large;
 }
-#heading{ margin: 0 auto}
-#canvas { background: #99afa3; display: block; margin: 0 auto; }
-#c { background: #eeeeee; display: block; margin: 0 auto; }
-#timerel { background: #eeeeee; display: block; margin: 0 auto; }
+#heading{ 
+    margin: 0 auto
+}
+#canvas { 
+    background: #99afa3; display: block; margin: 0 auto; 
+}
+#c { 
+    display: block; margin: 0 auto; 
+}
+#timerel { 
+    display: block; margin: 0 auto; 
+}
 .modal {
     display: none; 
     position: fixed; 
@@ -80,4 +88,9 @@
 
 .content{
     color: #002f4d;
+}
+
+/* Jogo */
+footer{
+    z-index: -1;
 }
