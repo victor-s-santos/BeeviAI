@@ -3,7 +3,6 @@ var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
 
 modelfungo = function() {
-    console.log("func called")
     modal.style.display = "block";
     x = document.querySelector("#gamehead");
     x.textContent = "Fim de Jogo!Mais sorte na próxima."
@@ -11,7 +10,6 @@ modelfungo = function() {
 }
 
 modelfunwin = function() {
-    console.log("func called")
     modal.style.display = "block";
     x = document.querySelector("#gamehead");
     x.textContent = "Parabéns, você venceu!"
@@ -61,9 +59,9 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    twominutes = 30;
+    halfminute = 30;
     x = document.querySelector("#timerel");
-    startTimer(twominutes,x)
+    startTimer(halfminute,x)
 }
 playing = true
 window.addEventListener('keydown',doKeyDown,true);
@@ -108,7 +106,6 @@ function doKeyDown(evt)
         }
         if (m.checker("canvas"))
             playing = false
-        console.log(m.getMoves())
 
     }
     if (handled)
@@ -425,7 +422,8 @@ var csrftoken = getCookie('csrftoken');
 $(document).ready(function(){
     $('#demo').on('click', function(){
         $user = $('#printuser').text();
-        $score = parseInt(m.getMoves(), 10)  
+        $score = parseInt(m.getMoves(), 10);
+        // alert($score)
         if($user == "" || $score == ""){
             alert("Nenhum valor foi registrado!");
         }else{
