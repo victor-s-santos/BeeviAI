@@ -35,3 +35,14 @@ class RegisterTest(TestCase):
         """Form must have 4 fields"""
         form = self.response.context['form']
         self.assertSequenceEqual(['username', 'email', 'password1', 'password2'], list(form.fields))
+
+class RegisterPostTest(TestCase):
+    def setUp(self):
+        data = dict(username='vsantos93', email='vsantos93@email.com',
+                    password1='pythoneh43', password2='pythoneh43')
+        self.response = self.client.post('/register/', data)
+
+
+    def test_post(self):
+        """Valid post must redirect to /register/"""
+        self.assertEqual(302, self.response.status_code)
